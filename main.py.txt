@@ -65,14 +65,14 @@ def main():
         
         if choice == '1':
             books = add_book(books)
-        elif choice == '2':
-            print("Функция в разработке")
+         elif choice == '2':
+            list_books(books)
         elif choice == '3':
-            print("Функция в разработке")
+            average_rating(books)
         elif choice == '4':
-            print("Функция в разработке")
+            author_stats(books)
         elif choice == '5':
-            books = delete_book(books)
+            print("Функция в разработке")
         elif choice == '6':
             print("До свидания!")
             break
@@ -80,7 +80,7 @@ def main():
             print("Неверный выбор!")
 
 if __name__ == "__main__":
-    main()
+   
 
 def delete_book(books):
     print("\n--- Удаление книги ---")
@@ -104,4 +104,4 @@ def delete_book(books):
             print(f"Введите число от 0 до {len(books)}")
         except ValueError:
             print("Введите целое число!")
-```
+``` main()
