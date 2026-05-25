@@ -81,7 +81,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-'''python
+
 def delete_book(books):
     print("\n--- Удаление книги ---")
     if not books:
