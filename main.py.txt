@@ -65,12 +65,21 @@ def main():
         
         if choice == '1':
             books = add_book(books)
+<<<<<<< HEAD
         elif choice == '2':
             print("Функция в разработке")
         elif choice == '3':
             print("Функция в разработке")
         elif choice == '4':
             print("Функция в разработке")
+=======
+         elif choice == '2':
+            list_books(books)
+        elif choice == '3':
+            average_rating(books)
+        elif choice == '4':
+            author_stats(books)
+>>>>>>> feature/list-and-stats
         elif choice == '5':
             print("Функция в разработке")
         elif choice == '6':
@@ -81,4 +90,37 @@ def main():
 
 if __name__ == "__main__":
     main()
+<<<<<<< HEAD
 ```
+=======
+``````python
+def list_books(books):
+    print("\n--- Список книг ---")
+    if not books:
+        print("Список пуст")
+        return
+    for i, book in enumerate(books, 1):
+        print(f"{i}. {book['author']} - \"{book['title']}\" "
+              f"(Оценка: {book['rating']}, Дата: {book['date']})")
+
+def average_rating(books):
+    if not books:
+        print("Нет книг для расчёта средней оценки")
+        return
+    avg = sum(book['rating'] for book in books) / len(books)
+    print(f"Средняя оценка: {avg:.2f}")
+
+def author_stats(books):
+    if not books:
+        print("Нет книг для статистики")
+        return
+    stats = {}
+    for book in books:
+        author = book['author']
+        stats[author] = stats.get(author, 0) + 1
+    
+    print("\n--- Статистика по авторам ---")
+    for author, count in sorted(stats.items()):
+        print(f"{author}: {count} книг(а/и)")
+```
+>>>>>>> feature/list-and-stats
