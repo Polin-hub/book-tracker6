@@ -66,12 +66,16 @@ def main():
         if choice == '1':
             books = add_book(books)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> feature/delete
         elif choice == '2':
             print("Функция в разработке")
         elif choice == '3':
             print("Функция в разработке")
         elif choice == '4':
             print("Функция в разработке")
+<<<<<<< HEAD
 =======
          elif choice == '2':
             list_books(books)
@@ -82,6 +86,10 @@ def main():
 >>>>>>> feature/list-and-stats
         elif choice == '5':
             print("Функция в разработке")
+=======
+        elif choice == '5':
+            books = delete_book(books)
+>>>>>>> feature/delete
         elif choice == '6':
             print("До свидания!")
             break
@@ -89,11 +97,8 @@ def main():
             print("Неверный выбор!")
 
 if __name__ == "__main__":
-    main()
-<<<<<<< HEAD
-```
-=======
-``````python
+   
+```python
 def list_books(books):
     print("\n--- Список книг ---")
     if not books:
@@ -124,3 +129,30 @@ def author_stats(books):
         print(f"{author}: {count} книг(а/и)")
 ```
 >>>>>>> feature/list-and-stats
+=======
+
+def delete_book(books):
+    print("\n--- Удаление книги ---")
+    if not books:
+        print("Список пуст")
+        return books
+    
+    for i, book in enumerate(books, 1):
+        print(f"{i}. {book['author']} - \"{book['title']}\"")
+    
+    while True:
+        try:
+            choice = int(input("\nВведите номер книги для удаления (0 - отмена): "))
+            if choice == 0:
+                return books
+            if 1 <= choice <= len(books):
+                removed = books.pop(choice - 1)
+                save_books(books)
+                print(f"Книга \"{removed['title']}\" {removed['author']} удалена")
+                return books
+            print(f"Введите число от 0 до {len(books)}")
+        except ValueError:
+            print("Введите целое число!")
+```
+>>>>>>> feature/delete
+ main()
