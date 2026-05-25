@@ -1,0 +1,84 @@
+```python
+import json
+from datetime import datetime
+
+def load_books():
+    try:
+        with open('books.json', 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return []
+
+def save_books(books):
+    with open('books.json', 'w', encoding='utf-8') as f:
+        json.dump(books, f, ensure_ascii=False, indent=2)
+
+def add_book(books):
+    print("\n--- Добавление книги ---")
+    author = input("Автор: ").strip()
+    title = input("Название: ").strip()
+    
+    # Проверка на дубликаты
+    for book in books:
+        if book['author'].lower() == author.lower() and book['title'].lower() == title.lower():
+            print("Ошибка: Книга с таким автором и названием уже существует!")
+            return books
+    
+    while True:
+        try:
+            rating = int(input("Оценка (1-5): "))
+            if 1 <= rating <= 5:
+                break
+            print("Оценка должна быть от 1 до 5!")
+        except ValueError:
+            print("Введите целое число!")
+    
+    date_str = input("Дата прочтения (ГГГГ-ММ-ДД): ").strip()
+    if not date_str:
+        date_str = datetime.now().strftime("%Y-%m-%d")
+    
+    book = {
+        'author': author,
+        'title': title,
+        'rating': rating,
+        'date': date_str
+    }
+    
+    books.append(book)
+    save_books(books)
+    print("Книга успешно добавлена!")
+    return books
+
+def main():
+    books = load_books()
+    
+    while True:
+        print("\n--- Трекер прочитанных книг ---")
+        print("1. Добавить книгу")
+        print("2. Показать все книги")
+        print("3. Показать среднюю оценку")
+        print("4. Статистика по авторам")
+        print("5. Удалить книгу")
+        print("6. Выход")
+        
+        choice = input("\nВыберите опцию: ").strip()
+        
+        if choice == '1':
+            books = add_book(books)
+        elif choice == '2':
+            print("Функция в разработке")
+        elif choice == '3':
+            print("Функция в разработке")
+        elif choice == '4':
+            print("Функция в разработке")
+        elif choice == '5':
+            print("Функция в разработке")
+        elif choice == '6':
+            print("До свидания!")
+            break
+        else:
+            print("Неверный выбор!")
+
+if __name__ == "__main__":
+    main()
+```
